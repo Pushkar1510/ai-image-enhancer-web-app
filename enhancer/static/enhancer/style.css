@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    /*background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(images/p.jpg);*/
+    background-image: url(images/881757.jpg);
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    
+}
+h2{
+    white-space : nowrap;
+    position: absolute;
+    top: 25%;
+    margin-left: 400px;
+    font-size: 5vw;
+    color: #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+}
+h2::before
+{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #986bf2;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #986bf2;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+
+}
+@keyframes animate
+{
+    0%,10%,100%
+    {
+        width: 0;
+    }
+    70%,90%
+    {
+        width: 100%;
+    }
+}
+
+.navbar{
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.logo{
+    cursor: pointer;
+}
+
+.navbar ul li{ /*this is for the list in navbar-customization */
+    list-style: none; 
+    display: inline-block;
+    margin: 0px 20px;
+    position: relative;
+
+}
+.navbar ul li a{  /* This is for the anchor tag in the list */
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+.navbar ul li::after{ /* the hover effect */
+    content: '';
+    height: 3px;
+    width: 0;
+    background:#009688;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+
+}
+.navbar ul li:hover:after{
+    width: 100%;
+
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 50px;
+  }

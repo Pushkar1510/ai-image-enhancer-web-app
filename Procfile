@@ -1,0 +1,1 @@
+web gunicorn minipro.wsgi:application --log-file -

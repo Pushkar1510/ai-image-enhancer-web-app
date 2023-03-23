@@ -1,0 +1,58 @@
+{% extends 'enhancer/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <div class="media-body">
+            <h3 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+                <hr>
+                <br>
+                {% if user.profile.premium == False %}
+                <p>Membership: Free</p>
+                <br>
+                <p>Trials Remaining: {{ user.profile.trials }}</p>
+                {% else %}
+                <p>Membership: Premium</p>
+                {% endif %}
+                {% if user.profile.email_verified == True %}
+                <p>Email Status : Verified</p>
+                <br>
+                {% else %}
+                <p>Email Status : Not Verified</p>
+                {% endif %}
+        </div>
+    </div>
+    <br>
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Edit Profile
+        </a>
+        {% if user.profile.email_verified == False %}
+        <a class="btn btn-primary" href="{% url 'users-verification' %}">Verify Email</a>
+        {% endif %}
+        {% if user.profile.premium == False %}
+        <form method="post"> 
+            {% csrf_token %} 
+            <button type="submit" name="run_script" class="btn btn-primary">Purchase Premium</button> 
+        </form> 
+        {% endif %}
+      </p>
+
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                    <legend><small>Profile Info</small></legend>
+                    <hr>
+                    {{ u_form|crispy }}
+                </fieldset>
+
+                <button class="btn btn-success" type="submit">Update</button>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock content %}

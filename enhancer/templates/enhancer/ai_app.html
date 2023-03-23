@@ -1,0 +1,13 @@
+{% extends 'enhancer/base.html' %}
+{% block content %}
+<div class="text-center">
+    <div class="img"><img src="{{ user.profile.image.url }}" class="rounded" style="max-height: 360px; max-width: 640px; margin-top: 60px; border: 5px solid #427;"></div>
+</div>
+
+<form method="post" class="content-section" style="background-color: #427;"> 
+    {% csrf_token %} 
+    <button type="submit" name="to_black" class="btn btn-primary" style="margin: 0px;">Convert to black</button>
+    <button type="submit" name="to_color" class="btn btn-primary" style="margin-left: 160px;">Convert to color</button> 
+    <button type="submit" name="to_upscale" class="btn btn-primary" style="margin-left: 160px;">Upscaling</button> 
+</form>
+{% endblock content %}

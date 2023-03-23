@@ -1,0 +1,12 @@
+{% extends 'enhancer/base.html' %}
+{% block content %}
+<div class="text-center">
+    <div class="img"><img src="{{ user.profile.image.url }}"; class="rounded" style="max-height: 360px; max-width: 640px; margin-top: 60px; border: 5px solid #427;"></div>
+</div>
+
+
+<form method="post" class="content-section" style="background-color: #427;"> 
+    {% csrf_token %} 
+    <a href='/media/converted/conv.jpg' download class="btn btn-primary" style="margin-left: 190px;">Download</a> 
+</form>
+{% endblock content %}

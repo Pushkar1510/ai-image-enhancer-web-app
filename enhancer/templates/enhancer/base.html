@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if title %}
+    <title>AI - {{ title }}</title>
+    {% else %}
+    <title>AI</title>
+    {% endif %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'enhancer/style.css' %}">
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script type="text/javascript">
+      function sendEmail() {
+      Email.send({
+        Host: "",
+        Username: "",
+        Password: "",
+        To: '{{ user.email }}',
+        From: "",
+        Subject: "AI Image Enhancer : Email Verification",
+        Body: "Your security code for email verfications is {{ user.profile.security_code }}",
+      })
+        .then(function (message) {
+        alert("Email sent successfully")
+        });
+      }
+    </script>
+</head>
+
+<style>
+    .forimage {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 310px;
+  }
+
+  .displayimage {
+    padding: 0px;
+  }
+</style>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+    <div class="banner">
+        <div class="navbar">
+          <ul><li><a href="{% url 'enhancer-first' %}">Welcome</a></li></ul>
+            <ul>
+                <li><a href="{% url 'enhancer-home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'users-profile' %}">Profile</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'enhancer-aboutus' %}">About Us</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'users-register' %}">Sign Up</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'enhancer-aboutus' %}">About Us</a></li>
+                {% endif %}
+            </ul>
+    
+        </div>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}" style="margin-left: 50px; margin-right: 50px;">
+    {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</body>
+</html>

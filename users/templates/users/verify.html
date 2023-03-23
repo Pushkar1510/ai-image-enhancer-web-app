@@ -1,0 +1,20 @@
+{% extends 'enhancer/base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+
+    <div class="content-section">
+        <form method="post">
+            {% csrf_token %}
+            <label for="security_code">Security Code</label>
+            <input type="text" class="form-control" id="security_code" name="security_code" aria-describedby="emailHelp" placeholder="Enter security code">
+            <small id="emailHelp" class="form-text text-muted">Click on <strong>Send Email</strong> to get it on your email.</small>
+            <br>
+            <button type="submit" class="btn btn-success">Verify</button>
+        </form>
+        <br>
+        <hr>
+        <form method="post">
+            <input class="btn btn-success" type="button" value="Send Email" onclick="sendEmail()" />
+        </form>
+    </div>
+{% endblock content %}

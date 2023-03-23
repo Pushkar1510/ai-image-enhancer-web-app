@@ -1,0 +1,26 @@
+{% extends 'enhancer/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    <h2 data-text="AI Image Enhancer">AI Image Enhancer</h2>
+</div>
+
+{% if user.is_authenticated %}
+<div class="forimage">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <fieldset>
+                <legend><small>Upload Image</small></legend>
+                <hr>
+                {% if user.profile.premium == False %}
+                <p>Trials Remaining: {{ user.profile.trials }}</p>
+                {% endif %}
+                <br>
+                {{ im_form|crispy }}
+            </fieldset>
+
+        <button  class="btn btn-primary" type="submit">Upload</button>
+    </form>
+</div>
+{% endif %}
+{% endblock content %}

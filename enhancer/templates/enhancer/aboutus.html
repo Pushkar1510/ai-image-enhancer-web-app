@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI - About</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'enhancer/style.css' %}">
+    <link rel="stylesheet" href="{% static 'enhancer/about.css' %}">
+</head>
+
+<body>
+
+    <div class="banner">
+        <div class="navbar">
+            <h6 class="logo"></h6>
+            <ul>
+                <li><a href="{% url 'enhancer-home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'users-profile' %}">Profile</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'enhancer-aboutus' %}">About Us</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'users-register' %}">Sign Up</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'enhancer-aboutus' %}">About Us</a></li>
+                {% endif %}
+            </ul>
+    
+    </div>
+    
+    <section>
+        <div class="container">
+        <div class="card">
+        <div class="content">
+            
+        <div class="imgBx"><img src="{% static 'enhancer/images/pushkar.jpeg' %}" width="350"></div>
+        <div class="contentBx">
+            <h3>Pushkar Gharat <br><span>UI Designer</span></h3>
+            </div>
+        </div>
+
+        <ul class="sci">
+            <li style=" --i:1 ">
+                <a href="#"></a><i class="fa fa-facebook" aria-hidden="true"></i>
+            </li>
+            <li style=" --i:2 ">
+                <a href="#"></a><i class="fa fa-twitter" aria-hidden="true"></i>
+            </li>
+            <li style=" --i:3 ">
+                <a href="#"></a><i class="fa fa-instagram" aria-hidden="true"></i>
+            </li>
+        </ul>
+        </div>
+        <div class="card">
+            <div class="content">
+                
+            <div class="imgBx"><img src="{% static 'enhancer/images/shivam.jpeg' %}"  width="350"></div>
+            <div class="contentBx">
+                <h3>Shivam Ghodke <br><span>Backend Programmer</span></h3>
+                </div>
+            </div>
+    
+            <ul class="sci">
+                <li style=" --i:1 ">
+                    <a href="#"></a><i class="fa fa-facebook" aria-hidden="true"></i>
+                </li>
+                <li style=" --i:2 ">
+                    <a href="#"></a><i class="fa fa-twitter" aria-hidden="true"></i>
+                </li>
+                <li style=" --i:3 ">
+                    <a href="#"></a><i class="fa fa-instagram" aria-hidden="true"></i>
+                </li>
+            </ul>
+            </div>
+            <div class="card">
+                <div class="content">
+                    
+                <div class="imgBx"><img src="{% static 'enhancer/images/piyush.jpeg' %}"  width="350"></div>
+                <div class="contentBx">
+                    <h3>Piyush Chaudhari <br><span>Server manager</span></h3>
+                    </div>
+                </div>
+        
+                <ul class="sci">
+                    <li style=" --i:1 ">
+                        <a href="#"></a><i class="fa fa-facebook" aria-hidden="true"></i>
+                    </li>
+                    <li style=" --i:2 ">
+                        <a href="#"></a><i class="fa fa-twitter" aria-hidden="true"></i>
+                    </li>
+                    <li style=" --i:3 ">
+                        <a href="#"></a><i class="fa fa-instagram" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                </div>
+        </div>
+    </section>
+</body>
+</html>
